@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Special Surprise</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+
+    <div id="quiz-screen" class="card active">
+        <h2>Answer these questions first! 💕</h2>
+        <div id="quiz-container">
+    
+        </div>
+    </div>
+
+    <div id="bouquet-screen" class="card">
+        <h2>A Bouquet of Lilies for You 💐</h2>
+        <p class="hint">Tap on each of the 3 main lilies in the image to read your notes...</p>
+
+        <div class="image-map-container">
+            <img src="bouquet.jpg" alt="Lily Bouquet" class="bouquet-img">
+
+            <button class="lily-target target-top" data-index="0" data-msg="You make me smile every single day.">✨</button>
+            <button class="lily-target target-left" data-index="1" data-msg="I love your laugh more than anything.">💖</button>
+            <button class="lily-target target-right" data-index="2" data-msg="You are my absolute favorite person.">🌹</button>
+        </div>
+
+        <div id="lily-message" class="message-box">Tap a lily above to begin!</div>
+    </div>
+
+    <div id="letter-screen" class="card">
+        <div class="image-wrapper">
+            <img src="picture.jpg" alt="A special memory">
+        </div>
+
+        <div class="audio-wrapper">
+            <audio controls>
+                <source src="music.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </div>
+
+        <div class="letter-text">
+            <h1>Dear Friend,</h1>
+            <p>Write your first beautiful paragraph here. Now that she has completed the quiz and opened all your custom lilies, she can read your full, heartfelt message while the audio track plays in the background.</p>
+            <p>Write your second paragraph here. This entire setup transitions beautifully with responsive resizing parameters across various mobile devices.</p>
+            <p class="signature">With love,<br><strong>Your Name</strong></p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
