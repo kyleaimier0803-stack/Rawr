@@ -51,12 +51,19 @@ function loadQuestion() {
 function checkAnswer(selectedIndex) {
     const currentData = quizQuestions[currentQuestionIndex];
     if (selectedIndex === currentData.correct) {
+       
+        const audio = document.querySelector('audio');
+        if (audio && currentQuestionIndex === 0) {
+            audio.play().catch(err => console.log("Audio play blocked: ", err));
+        }
+        
         currentQuestionIndex++;
         loadQuestion();
     } else {
         alert("Wrong answer! Try again! 😘");
     }
 }
+
 
 document.querySelectorAll('.lily-target').forEach(lily => {
     lily.addEventListener('click', (e) => {
