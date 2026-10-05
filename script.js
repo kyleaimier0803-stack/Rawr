@@ -52,10 +52,10 @@ function checkAnswer(selectedIndex) {
     const currentData = quizQuestions[currentQuestionIndex];
     if (selectedIndex === currentData.correct) {
         
-       
-        const audio = document.querySelector('audio');
-        if (audio) {
-            audio.play().catch(err => console.log("Autoplay block bypassed: ", err));
+        // This instantly catches her first click interaction and forces the hidden music to play
+        const audio = document.getElementById('bg-music');
+        if (audio && currentQuestionIndex === 0) {
+            audio.play().catch(err => console.log("Autoplay bypass: ", err));
         }
         
         currentQuestionIndex++;
@@ -64,6 +64,7 @@ function checkAnswer(selectedIndex) {
         alert("Wrong answer! Try again! 😘");
     }
 }
+
 
 document.querySelectorAll('.lily-target').forEach(lily => {
     lily.addEventListener('click', (e) => {
