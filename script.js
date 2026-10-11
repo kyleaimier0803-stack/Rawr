@@ -1,30 +1,25 @@
-// 1. Configure your Custom Quiz Settings
 const quizQuestions = [
     {
         question: "If pwde ka pumunta kahit saan rn san ka pupunta?",
         options: ["Betch", "Bundok", "City", "kahit san"],
-       
     },
     {
         question: "peyborit time ng araw?",
         options: ["Umaga", "Tanghali", "Gabi", "Madaling araw"],
-        
-    }
-     {
+    },
+    {
         question: "peyborit weather?",
         options: ["maaraw", "makulimlim", "maulan", "mahangin"],
-        
-    }
+    },
     {
         question: "peyborit food?",
         options: ["ice kreme", "price", "nodols", "any na matames"],
-        
     }
 ];
 
 let currentQuestionIndex = 0;
 const clickedLilies = new Set();
-const totalLilies = 2; // Setting this to 3 triggers the letter after 3 lily clicks!
+const totalLilies = 3;
 
 const quizScreen = document.getElementById('quiz-screen');
 const bouquetScreen = document.getElementById('bouquet-screen');
@@ -49,7 +44,7 @@ function loadQuestion() {
         currentData.options.forEach((opt, idx) => {
             const btn = document.createElement('button');
             btn.textContent = opt;
-            btn.onclick = () => checkAnswer(idx);
+            btn.onclick = () => handleAnswerChoice();
             optionsDiv.appendChild(btn);
         });
         quizContainer.appendChild(optionsDiv);
@@ -59,24 +54,16 @@ function loadQuestion() {
     }
 }
 
-function checkAnswer(selectedIndex) {
-    const currentData = quizQuestions[currentQuestionIndex];
-    if (selectedIndex === currentData.correct) {
-        
-        // This fires the hidden background music instantly on her first screen click
-        const audio = document.getElementById('bg-music');
-        if (audio && currentQuestionIndex === 0) {
-            audio.play().catch(err => console.log("Autoplay active: ", err));
-        }
-        
-        currentQuestionIndex++;
-        loadQuestion();
-    } else {
-        alert("Wrong answer! Try again! 😘");
+function handleAnswerChoice() {
+    const audio = document.getElementById('bg-music');
+    if (audio && currentQuestionIndex === 0) {
+        audio.play().catch(err => console.log("Autoplay active: ", err));
     }
+    
+    currentQuestionIndex++;
+    loadQuestion();
 }
 
-// Lily Targeting Engine Logic Operations
 document.querySelectorAll('.lily-target').forEach(lily => {
     lily.addEventListener('click', (e) => {
         const btn = e.currentTarget;
@@ -87,12 +74,11 @@ document.querySelectorAll('.lily-target').forEach(lily => {
         btn.classList.add('clicked');
         clickedLilies.add(idx);
 
-        // Activates automated page fade sequence when exactly 3 unique lilies are clicked
         if (clickedLilies.size === totalLilies) {
             setTimeout(() => {
                 bouquetScreen.classList.remove('active');
                 letterScreen.classList.add('active');
-            }, 2000); // 3-second reading delay window applied to the last unlocked phrase
+            }, 2000); 
         }
     });
 });
